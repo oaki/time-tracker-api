@@ -1,5 +1,16 @@
 parameters:
+    database:
+        driver: mysqli
 
+        host: mariadb103.websupport.sk
+        port: 3313
+        database: inteles
+        username: inteles
+        password: Lx926vb@18
+        charset: utf8
+
+    jwt:
+        secret_token: etcvbnpiondsfuiayubfnwaopfjnsduisydfmsdop
 
 application:
 	errorPresenter: Error
@@ -13,3 +24,14 @@ session:
 
 services:
 	router: App\Router\RouterFactory::createRouter
+	connection:
+		factory: DibiConnection
+		arguments: [%database%]
+
+	UserModel:
+		factory: App\Model\UserModel
+
+	LogModel:
+		factory: App\Model\LogModel
+
+

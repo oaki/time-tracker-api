@@ -5,7 +5,7 @@
 	"type": "project",
 	"license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
 	"require": {
-		"php": ">= 7.1",
+		"php": ">= 7.2",
 		"nette/application": "^3.0",
 		"nette/bootstrap": "^3.0",
 		"nette/caching": "^3.0",
@@ -19,7 +19,12 @@
 		"nette/security": "^3.0",
 		"nette/utils": "^3.0",
 		"latte/latte": "^2.5",
-		"tracy/tracy": "^2.6"
+		"tracy/tracy": "^2.6",
+		"apitte/core": "^0.6.0",
+		"apitte/openapi": "0.6.0",
+		"ublaboo/api-router": "^3.0",
+		"dibi/dibi": "~2.3.2",
+		"adhocore/jwt": "^0.1.0"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0"
@@ -30,7 +35,7 @@
 	"minimum-stability": "stable",
 	"config": {
 		"platform": {
-			"php": "7.1"
+			"php": "7.2"
 		}
 	}
 }

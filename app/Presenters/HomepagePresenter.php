@@ -9,4 +9,9 @@ use Nette;
 
 final class HomepagePresenter extends Nette\Application\UI\Presenter
 {
+    public function actionCreate()
+    {
+        $this->sendJson(['John' => 'Doe']);
+
+    }
 }

@@ -1,1 +1,10 @@
 app/config/local.neon
+/vendor
+/temp
+
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+.idea/

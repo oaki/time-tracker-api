@@ -1,5 +1,4 @@
-# Apache configuration file (see https://httpd.apache.org/docs/current/mod/quickreference.html)
-Require all granted
+    # Apache configuration file (see https://httpd.apache.org/docs/current/mod/quickreference.html)
 
 # disable directory listing
 <IfModule mod_autoindex.c>
@@ -9,7 +8,7 @@ Require all granted
 # enable cool URL
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	# RewriteBase /
+	 RewriteBase /
 
 	# use HTTPS
 	# RewriteCond %{HTTPS} !on
