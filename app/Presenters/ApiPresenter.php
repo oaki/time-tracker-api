@@ -4,6 +4,7 @@ namespace App\Presenters;
 
 use Ahc\Jwt\JWT;
 use Nette;
+use Tracy\Debugger;
 
 class ApiPresenter extends Nette\Application\UI\Presenter
 {
@@ -53,16 +54,42 @@ class ApiPresenter extends Nette\Application\UI\Presenter
         try {
             $jwtValues = $jwt->decode($params['token']);
             $logModel = $this->getService('LogModel');
-            $logModel->save([
-                'time' => new \DibiDateTime(),
+            $logId = $logModel->save([
+                'time' => new \Dibi\DateTime(),
                 'lat' => $params['lat'],
                 'lng' => $params['lng'],
                 'type' => $params['type'],
-                'user_id' => $jwtValues['id'],
+                'user_id' => $jwtValues['id']
             ]);
 
 
         } catch (\Exception $e) {
+            $this->sendJson(['error' => 'Token is not valid']);
+        }
+
+        $this->sendJson(['success' => true, 'id' => $logId]);
+    }
+
+    public function actionSaveImage()
+    {
+
+        $params = $this->getHttpRequest()->getPost();
+        $fileUpload = $this->getHttpRequest()->getFile('image');
+
+        $file = $fileUpload->getContents();
+
+        $jwt = $this->getJwt();
+        try {
+            $jwtValues = $jwt->decode($params['userToken']);
+            $logImageModel = $this->getService('LogImageModel');
+            $logImageModel->save([
+                'log_id' => $params['log_id'],
+                'data' => $file,
+            ]);
+
+
+        } catch (\Exception $e) {
+            Debugger::log($e);
             $this->sendJson(['error' => 'Token is not valid']);
         }
 

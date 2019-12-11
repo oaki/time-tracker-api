@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Tracy\Debugger;
 
-class LogModel
+class LogImageModel
 {
 
     /**
@@ -17,15 +17,13 @@ class LogModel
         $this->connection = $connection;
     }
 
-    public function save($params): int
+    public function save($params)
     {
-//        if($params['image']){
-//            $image = $params['image'];
-//            unset($params['image']);
-//        }
+        $this->connection->insert('image', $params)->execute();
+    }
 
-        Debugger::log($params);
-        return $this->connection->insert('log', $params)->execute('n');
-
+    public function getImage($id)
+    {
+        return $this->connection->fetchSingle('SELECT data FROM [image] WHERE id=%i', $id);
     }
 }

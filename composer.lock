@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8483a0c808d91e0b4f84f409ae7423cc",
+    "content-hash": "58892b28955a9ac4fc7b553a8d2f1fa8",
     "packages": [
         {
             "name": "adhocore/jwt",
@@ -398,37 +398,37 @@
         },
         {
             "name": "dibi/dibi",
-            "version": "v2.3.5",
+            "version": "v4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/dibi.git",
-                "reference": "fc6ef0b121b2138868b94eb5ea08ad0c62de05ae"
+                "reference": "79f841ec90662b5bb0e61598e727fde6a01567b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/dibi/zipball/fc6ef0b121b2138868b94eb5ea08ad0c62de05ae",
-                "reference": "fc6ef0b121b2138868b94eb5ea08ad0c62de05ae",
+                "url": "https://api.github.com/repos/dg/dibi/zipball/79f841ec90662b5bb0e61598e727fde6a01567b8",
+                "reference": "79f841ec90662b5bb0e61598e727fde6a01567b8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": ">=7.1"
             },
             "replace": {
-                "dg/dibi": "self.version"
+                "dg/dibi": "*"
             },
             "require-dev": {
-                "nette/tester": "~1.3",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "~2.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
                 "classmap": [
-                    "dibi/"
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -455,9 +455,10 @@
                 "oracle",
                 "pdo",
                 "postgresql",
-                "sqlite"
+                "sqlite",
+                "sqlsrv"
             ],
-            "time": "2015-12-16T14:14:32+00:00"
+            "time": "2019-03-11T20:38:25+00:00"
         },
         {
             "name": "doctrine/annotations",
