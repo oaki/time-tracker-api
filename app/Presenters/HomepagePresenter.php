@@ -45,7 +45,7 @@ final class HomepagePresenter extends BasePresenter
         $this->template->user = $userModel->fetch($userId);
 
         $year = $this->year ? $this->year : date('Y');
-        $month = $this->month ? $this->month : date('m');
+        $month = $this->month ? $this->month : date('n');
         $this->template->logList = $userModel->filterLog($userId, $year, $month);
     }
 
@@ -57,7 +57,8 @@ final class HomepagePresenter extends BasePresenter
         $this->template->user = $userModel->fetch($userId);
 
         $year = $this->year ? $this->year : date('Y');
-        $month = $this->month ? $this->month : date('m');
+        $month = $this->month ? $this->month : date('n');
+
         $this->template->logList = $userModel->filterNewLog($userId, $year, $month);
     }
 
@@ -101,7 +102,7 @@ final class HomepagePresenter extends BasePresenter
 
         $form->setDefaults([
             'year' => $this->year ? $this->year : date('Y'),
-            'month' => $this->month ? $this->month : date('m')
+            'month' => $this->month ? $this->month : date('n')
         ]);
         return $form;
     }
