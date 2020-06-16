@@ -173,7 +173,8 @@ optgroup {
 
 table {
     border-collapse: collapse;
-    border-spacing: 0
+    border-spacing: 0;
+    text-align: left;
 }
 
 ol, ul {
@@ -457,7 +458,7 @@ html.font-size-xl {
 }
 
 body {
-    text-align: center;
+    text-align: left;
     color: #58646f;
     font-family: "Open Sans", sans-serif;
     font-size: 1.6rem;
@@ -4923,4 +4924,10 @@ body .fd-r {
         left: 50%;
         transform: translate(-50%, -50%)
     }
+}
+
+
+.navbar .navbar-toggler {
+    top: .25rem;
+    right: 1rem;
 }

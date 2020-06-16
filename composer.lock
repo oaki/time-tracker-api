@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58892b28955a9ac4fc7b553a8d2f1fa8",
+    "content-hash": "15eccada429e9d94e12e831c38340029",
     "packages": [
         {
             "name": "adhocore/jwt",
@@ -196,6 +196,68 @@
             "time": "2019-07-06T19:55:07+00:00"
         },
         {
+            "name": "contributte/application",
+            "version": "v0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/application.git",
+                "reference": "401975416fbc87b13acc66d17882c5941b3e303b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/application/zipball/401975416fbc87b13acc66d17882c5941b3e303b",
+                "reference": "401975416fbc87b13acc66d17882c5941b3e303b",
+                "shasum": ""
+            },
+            "require": {
+                "nette/application": "^3.0.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "nette/http": "~2.4.8 || ~3.0.0",
+                "ninjify/nunjuck": "^0.2.0",
+                "ninjify/qa": "^0.9.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^0.11.0",
+                "phpstan/phpstan-nette": "^0.11.1",
+                "phpstan/phpstan-shim": "^0.11.2",
+                "phpstan/phpstan-strict-rules": "^0.11.0",
+                "psr/http-message": "~1.0.1",
+                "tracy/tracy": "~2.6.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Contributte\\Application\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milan Felix Šulc",
+                    "homepage": "https://f3l1x.io"
+                }
+            ],
+            "description": "Extra contrib to nette/application",
+            "homepage": "https://github.com/contributte/application",
+            "keywords": [
+                "application",
+                "component",
+                "control",
+                "nette",
+                "presenter"
+            ],
+            "time": "2020-04-01T17:34:21+00:00"
+        },
+        {
             "name": "contributte/di",
             "version": "v0.4.0",
             "source": {
@@ -323,6 +385,7 @@
                 "phpdoc",
                 "reflection"
             ],
+            "abandoned": "nettrine/annotations",
             "time": "2019-06-28T19:09:34+00:00"
         },
         {
@@ -735,6 +798,53 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
+        },
+        {
+            "name": "holidayapi/holidayapi-php",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/holidayapi/holidayapi-php.git",
+                "reference": "b6fad34f1909fbf5b859b625202610e57cefd3d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/holidayapi/holidayapi-php/zipball/b6fad34f1909fbf5b859b625202610e57cefd3d8",
+                "reference": "b6fad34f1909fbf5b859b625202610e57cefd3d8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HolidayAPI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Sherman",
+                    "email": "hello@holidayapi.com",
+                    "homepage": "https://holidayapi.com"
+                }
+            ],
+            "description": "Official PHP library for Holiday API",
+            "homepage": "https://github.com/holidayapi/holidayapi-php",
+            "keywords": [
+                "calendar",
+                "holiday",
+                "holidayapi",
+                "holidays"
+            ],
+            "time": "2020-06-13T15:19:15+00:00"
         },
         {
             "name": "latte/latte",
@@ -1699,6 +1809,7 @@
                 "nette",
                 "reflection"
             ],
+            "abandoned": true,
             "time": "2017-07-11T19:28:57+00:00"
         },
         {
@@ -2108,6 +2219,189 @@
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
+            "name": "symfony/inflector",
+            "version": "v4.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/inflector.git",
+                "reference": "3330be44724db42f0aa493002ae63f5d29f8d5f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/inflector/zipball/3330be44724db42f0aa493002ae63f5d29f8d5f7",
+                "reference": "3330be44724db42f0aa493002ae63f5d29f8d5f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Inflector\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Inflector Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "inflection",
+                "pluralize",
+                "singularize",
+                "string",
+                "symfony",
+                "words"
+            ],
+            "time": "2020-05-20T08:37:50+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "reference": "e94c8b1bbe2bc77507a1056cdb06451c75b427f9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.17-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2020-05-12T16:14:59+00:00"
+        },
+        {
+            "name": "symfony/property-access",
+            "version": "v4.4.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/property-access.git",
+                "reference": "e6d51a8845b862835f5fcaf3c1030a50dc7cc70f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/property-access/zipball/e6d51a8845b862835f5fcaf3c1030a50dc7cc70f",
+                "reference": "e6d51a8845b862835f5fcaf3c1030a50dc7cc70f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "symfony/inflector": "^3.4|^4.0|^5.0"
+            },
+            "require-dev": {
+                "symfony/cache": "^3.4|^4.0|^5.0"
+            },
+            "suggest": {
+                "psr/cache-implementation": "To cache access methods."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\PropertyAccess\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony PropertyAccess Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "access",
+                "array",
+                "extraction",
+                "index",
+                "injection",
+                "object",
+                "property",
+                "property path",
+                "reflection"
+            ],
+            "time": "2020-05-30T18:50:54+00:00"
+        },
+        {
             "name": "tracy/tracy",
             "version": "v2.6.5",
             "source": {
@@ -2237,7 +2531,78 @@
                 "routes",
                 "routing"
             ],
+            "abandoned": "contributte/api-router",
             "time": "2019-08-11T19:16:04+00:00"
+        },
+        {
+            "name": "ublaboo/datagrid",
+            "version": "v6.2.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contributte/datagrid.git",
+                "reference": "852ed2d78df3f52f8f7e2beff19754640adf7c64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contributte/datagrid/zipball/852ed2d78df3f52f8f7e2beff19754640adf7c64",
+                "reference": "852ed2d78df3f52f8f7e2beff19754640adf7c64",
+                "shasum": ""
+            },
+            "require": {
+                "contributte/application": "^0.4.1",
+                "nette/application": "^3.0.1",
+                "nette/di": "^3.0.0",
+                "nette/forms": "^3.0.1",
+                "nette/utils": "^3.0.1",
+                "php": "^7.2",
+                "symfony/property-access": "^3.0.0 || ^4.0.0 || ^5.0.0"
+            },
+            "require-dev": {
+                "dibi/dibi": "^3.0.0 || ^4.0.0",
+                "doctrine/orm": "~2.6.3",
+                "gamee/php-code-checker-rules": "^1.0",
+                "mockery/mockery": "~1.2.2",
+                "nette/database": "~3.0.2",
+                "nette/tester": "^2.2",
+                "nextras/orm": "~3.1.0",
+                "ninjify/coding-standard": "^0.9.0",
+                "phpstan/phpstan": "^0.11.12",
+                "phpstan/phpstan-strict-rules": "^0.11.1",
+                "tharos/leanmapper": "~3.4.1",
+                "tracy/tracy": "~2.6.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ublaboo\\DataGrid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Janda",
+                    "homepage": "https://paveljanda.com"
+                },
+                {
+                    "name": "Milan Felix Šulc",
+                    "homepage": "https://f3l1x.io"
+                }
+            ],
+            "description": "DataGrid for Nette Framework: filtering, sorting, pagination, tree view, table view, translator, etc",
+            "keywords": [
+                "datagrid",
+                "grid",
+                "nette"
+            ],
+            "time": "2020-06-15T07:11:35+00:00"
         }
     ],
     "packages-dev": [

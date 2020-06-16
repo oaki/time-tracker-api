@@ -1,0 +1,52 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+<a href="{plink default}" class="btn btn-success float-right">Spať</a>
+<h2>Roboš: {$user['name']}, <small>Heslo: {$user['password']}</small></h2>
+
+
+<div>
+    {form selectDateForm}
+        {input year}
+        {input month}
+        {input submit}
+
+    {/form}
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Dátum</th>
+
+            <th>Typ</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $logList as $l}
+            <tr>
+                <td>{$l['id']}</td>
+                <td>{$l['time']|date:"d.m.Y H:i:s"}</td>
+                <td>{$l['type'] === 'arrival'?'Príchod':'Odchod'}</td>
+                <td>
+                    <a href="https://maps.google.com/?q={$l['lat']},{$l['lng']}" target="_blank">
+                        <i style="font-size: 24px;" class="fa fa-map-marker"></i>
+                    </a>
+                </td>
+                <td>
+                    {if $l['image_id']}
+                        <a href="{plink Preview:default id=>$l['image_id']}" target="_blank">
+                            <img height="50" src="{plink Preview:default id=>$l['image_id']}" alt="Zobraz obrázok">
+                        </a>
+                    {/if}
+                </td>
+            </tr>
+        {/foreach}
+
+        </tbody>
+    </table>
+</div>

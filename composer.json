@@ -24,7 +24,9 @@
 		"apitte/openapi": "0.6.0",
 		"ublaboo/api-router": "^3.0",
 		"adhocore/jwt": "^0.1.0",
-		"dibi/dibi": "^4.0"
+		"dibi/dibi": "^4.0",
+		"ublaboo/datagrid": "^6.2",
+		"holidayapi/holidayapi-php": "^2.2"
 	},
 	"require-dev": {
 		"nette/tester": "^2.0"

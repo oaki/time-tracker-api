@@ -1,27 +1,40 @@
-{* This is the welcome page, you can delete it *}
-
 {block content}
-<a href="{plink addUser}" class="btn btn-success float-right">Pridať</a>
-<h2>Roboši</h2>
+
+<h2>Roboši <a href="{plink addUser}" class="btn btn-success float-right">Pridať</a></h2>
 <div class="table-responsive">
 	<table class="table table-striped table-sm">
 		<thead>
 		<tr>
-			<th>#</th>
 			<th>Meno</th>
-			<th>Heslo</th>
+			<th>Čas</th>
 			<th></th>
 		</tr>
 		</thead>
 		<tbody>
         {foreach $users as $u}
 			<tr>
-				<td>{$u['id']}</td>
-				<td>{$u['name']}</td>
-				<td>{$u['password']}</td>
 				<td>
-					<a href="{plink view userId=>$u['id']}" class="btn btn-primary">Zobraziť</a>
-					
+                    {if $u['is_working']} <div style="margin-top:12px;border-radius:50%;background-color: #28a745;float: left;width:12px;height:12px;"></div>{/if}
+					<a class="btn btn-link" href="{plink view userId=>$u['id']}">{$u['name']}</a>
+
+				</td>
+				<td>
+					{if count($u['today_logs'])}
+						{foreach $u['today_logs'] as $l}
+							<div>
+                                <span n:ifset="$l['arrival']" title="{$l['arrival']['time']}">{$l['arrival']['time']|date:'%H:%M'}</span>
+								-
+								<span n:ifset="$l['leave']" title="{$l['leave']['time']}">{$l['leave']['time']|date:'%H:%M'}</span>
+							</div>
+						{/foreach}
+					{/if}
+				</td>
+				<td>
+                    {if $u['is_working']}
+						<a class="btn" href="https://maps.google.com/?q={$u['is_working']['lat']},{$u['is_working']['lng']}" target="_blank">
+							<i style="font-size: 24px;" class="fa fa-location-arrow"></i>
+						</a>
+					{/if}
 				</td>
 			</tr>
         {/foreach}

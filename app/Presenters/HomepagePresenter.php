@@ -30,11 +30,12 @@ final class HomepagePresenter extends BasePresenter
         $this->redirect('Homepage:default');
     }
 
+
     function renderDefault()
     {
         $userModel = $this->getService('UserModel');
 
-        $this->template->users = $userModel->fetchAll();
+        $this->template->users = $userModel->fetchAllWithLogForToday();
     }
 
     function renderView($userId)
@@ -49,7 +50,7 @@ final class HomepagePresenter extends BasePresenter
         $this->template->logList = $userModel->filterLog($userId, $year, $month);
     }
 
-    function renderNewView($userId)
+    function renderHours($userId)
     {
         $userModel = $this->getService('UserModel');
 
@@ -60,6 +61,8 @@ final class HomepagePresenter extends BasePresenter
         $month = $this->month ? $this->month : date('n');
 
         $this->template->logList = $userModel->filterNewLog($userId, $year, $month);
+        dump($this->template->logList);
+        exit;
     }
 
     protected function createComponentAddUserForm(): Nette\Application\UI\Form

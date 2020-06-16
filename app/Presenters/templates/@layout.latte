@@ -6,49 +6,63 @@
 
     <title>{ifset title}{include title|stripHtml} | {/ifset}Inteles Worker Dashboard</title>
 
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    {*<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />*}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/happy-inputs@2.0.4/src/happy.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ublaboo-datagrid@6.2.13/assets/datagrid.css">
+
+    <!-- Use this css for ajax spinners -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ublaboo-datagrid@6.2.13/assets/datagrid-spinners.css">
+
+    <!-- Include this css when using FilterMultiSelect (silviomoreto.github.io/bootstrap-select) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.15/dist/css/bootstrap-select.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 
     <!-- Bootstrap core CSS -->
-    <link href="/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {*<link href="/bootstrap.min.css" rel="stylesheet"*}
+          {*integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*}
 
     <!-- Custom styles for this template -->
-    <link href="/dashboard.css?v=1" rel="stylesheet">
+    <link href="/dashboard.css?v=1.1.2" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.js"></script>
+
 </head>
 <body>
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 
 
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{plink Homepage:default}">
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0 m-t-sm m-b-sm" href="{plink Homepage:default}">
         <img src="/inteles_logo.svg" alt="Inteles Logo" style="width: 100px;">
     </a>
 
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="{plink Homepage:logout}">Sign out</a>
-        </li>
-    </ul>
+    <button class="m-t-sm navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show" id="sidebarMenu">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
-                    {*<li class="nav-item">*}
-                        {*<a class="nav-link active" href="#">*}
-                            {*<span data-feather="home"></span>*}
-                            {*Dashboard <span class="sr-only">(current)</span>*}
-                        {*</a>*}
-                    {*</li>*}
+
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{plink default}">
+                        <a class="nav-link" href="{plink Homepage:default}">
                             <span data-feather="users"></span>
                             Roboši
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{plink Homepage:logout}">
+                            <span data-feather="logout"></span>
+                            Odhlasiť
                         </a>
                     </li>
 
@@ -66,14 +80,36 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/jquery-slim.min.js"><\/script>')</script>
-<script src="/bootstrap.bundle.min.js"
-        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
-        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="/dashboard.js?v=1"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/happy-inputs@2.1.0/src/nomodule-es5-fallback.js"></script>
+<script>
+    var happy = new Happy;
+
+    happy.init();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-ui-sortable@1.0.0/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nette.ajax.js@2.3.0/nette.ajax.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ublaboo-datagrid@6.2.13/assets/datagrid.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nette-forms@3.0.4/src/assets/netteForms.min.js"></script>
+
+<!-- It is recommended to include this JS file with just a few bits. It refreshes URL on non ajax request -->
+<script src="https://cdn.jsdelivr.net/npm/ublaboo-datagrid@6.2.13/assets/datagrid-instant-url-refresh.js"></script>
+
+<!-- Use this little extension for ajax spinners -->
+<script src="https://cdn.jsdelivr.net/npm/ublaboo-datagrid@6.2.13/assets/datagrid-spinners.js"></script>
+
+<!-- Include bootstrap-select.js when using FilterMultiSelect (silviomoreto.github.io/bootstrap-select) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.15/dist/js/bootstrap-select.js"></script>
+
+<script>
+    $('input.datepicker').datepicker({
+        format: "yyyy-mm-dd"
+    });
+</script>
 </body>
 </html>
