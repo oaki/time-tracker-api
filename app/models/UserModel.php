@@ -140,6 +140,10 @@ class UserModel
         return $list;
     }
 
+    function calculateDayPrice($rate ){
+
+    }
+
 
 
 
@@ -149,6 +153,11 @@ class UserModel
             'name' => $values['name'],
             'password' => $values['password'],
         ])->execute();
+    }
+
+    public function update($values, $id)
+    {
+        return $this->connection->update('user', $values)->where('id=%i', $id)->execute();
     }
 
     public function delete($id)

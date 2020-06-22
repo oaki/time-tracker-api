@@ -3,8 +3,12 @@
 {block content}
 
 
-<h2>Roboš: {$user['name']}, <small>Heslo: {$user['password']}</small>
+<h2>Roboš: {$user['name']},
+    <small>Heslo: {$user['password']}</small>
+
     <a href="{plink default}" class="btn btn-success float-right">Spať</a>
+    <span class="float-right">|</span>
+    <a href="{plink User:default id=>$user['id']}" class="btn btn-info float-right">Upraviť</a>
 </h2>
 
 
@@ -36,13 +40,14 @@
                 <td>{$l['type'] === 'arrival'?'Príchod':'Odchod'}</td>
                 <td>
                     <a href="https://maps.google.com/?q={$l['lat']},{$l['lng']}" target="_blank">
-                        <i style="font-size: 24px;" class="fa fa-map-marker"></i>
+                        <i style="font-size: 16px;" class="fa fa-map-marker"></i>
                     </a>
                 </td>
                 <td>
                     {if $l['image_id']}
                         <a href="#" class="pop">
-                            <img class="imageresource" src="{plink Preview:default id=>$l['image_id']}" style="height: 50px;">
+                            <img class="imageresource" src="{plink Preview:default id=>$l['image_id']}"
+                                 style="height: 50px;">
                             {*Click to Enlarge*}
                         </a>
                     {/if}
@@ -63,12 +68,12 @@
 
         var list = [
             {foreach $logList as $l}
-                {if $l['lat']!=0 && $l['lng']!=0}
-                {
-                    lat: {$l['lat']},
-                    lng: {$l['lng']}
-                },
-                {/if}
+            {if $l['lat']!=0 && $l['lng']!=0}
+            {
+                lat: {$l['lat']},
+                lng: {$l['lng']}
+            },
+            {/if}
             {/foreach}
         ];
 
@@ -99,10 +104,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                            class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <img src="" id="imagepreview" style="max-width: 90vw;max-height: 90vh;" >
+                <img src="" id="imagepreview" style="max-width: 90vw;max-height: 90vh;">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -112,7 +118,7 @@
 </div>
 <script>
 
-    $(".pop").on("click", function(e) {
+    $(".pop").on("click", function (e) {
         e.preventDefault();
         let imageSrc = $(this).find('.imageresource').attr('src');
         console.log(imageSrc);

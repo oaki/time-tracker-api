@@ -27,14 +27,13 @@
           {*integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">*}
 
     <!-- Custom styles for this template -->
-    <link href="/dashboard.css?v=1.1.2" rel="stylesheet">
+    {*<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">*}
+    <link href="/style.css" rel="stylesheet">
+    {*<link href="/dashboard.css?v=1.1.2" rel="stylesheet">*}
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.js"></script>
 
 </head>
 <body>
-<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
-
 
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0 m-t-sm m-b-sm" href="{plink Homepage:default}">
@@ -48,7 +47,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show" id="sidebarMenu">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show pt-4" id="sidebarMenu">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
 
@@ -59,6 +58,9 @@
                             Roboši
                         </a>
                     </li>
+
+                    <li class="dropdown-divider"></li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{plink Homepage:logout}">
                             <span data-feather="logout"></span>
@@ -71,7 +73,9 @@
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 pt-4">
+
+            <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
             {include content}
         </main>

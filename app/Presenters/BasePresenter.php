@@ -23,4 +23,10 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
             throw new Nette\Application\ForbiddenRequestException;
         }
     }
+
+    public function getService($name)
+    {
+        return $this->context->getService($name);
+    }
+
 }

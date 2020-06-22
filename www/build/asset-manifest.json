@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "https://inteles.bincik.sk/build/static/css/main.a18a3f3a.chunk.css",
+    "main.js": "https://inteles.bincik.sk/build/static/js/main.2a9d983e.chunk.js",
+    "main.js.map": "https://inteles.bincik.sk/build/static/js/main.2a9d983e.chunk.js.map",
+    "runtime-main.js": "https://inteles.bincik.sk/build/static/js/runtime-main.a2e4785f.js",
+    "runtime-main.js.map": "https://inteles.bincik.sk/build/static/js/runtime-main.a2e4785f.js.map",
+    "static/js/2.e039308c.chunk.js": "https://inteles.bincik.sk/build/static/js/2.e039308c.chunk.js",
+    "static/js/2.e039308c.chunk.js.map": "https://inteles.bincik.sk/build/static/js/2.e039308c.chunk.js.map",
+    "index.html": "https://inteles.bincik.sk/build/index.html",
+    "precache-manifest.1853b339eb4a1043346132577209a065.js": "https://inteles.bincik.sk/build/precache-manifest.1853b339eb4a1043346132577209a065.js",
+    "service-worker.js": "https://inteles.bincik.sk/build/service-worker.js",
+    "static/css/main.a18a3f3a.chunk.css.map": "https://inteles.bincik.sk/build/static/css/main.a18a3f3a.chunk.css.map",
+    "static/media/inteles_logo.svg": "https://inteles.bincik.sk/build/static/media/inteles_logo.2e90362d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a2e4785f.js",
+    "static/js/2.e039308c.chunk.js",
+    "static/css/main.a18a3f3a.chunk.css",
+    "static/js/main.2a9d983e.chunk.js"
+  ]
+}

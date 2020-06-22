@@ -4,9 +4,10 @@
 namespace App\Presenters;
 
 use Nette\Application\UI\Form;
-use Nette\Forms\Container;
-use Nette\Utils\ArrayHash;
+use Nette\Forms\Controls\Checkbox;
 use Ublaboo\DataGrid\DataGrid;
+
+
 
 
 final class HolidaysPresenter extends BasePresenter
@@ -32,7 +33,8 @@ final class HolidaysPresenter extends BasePresenter
         $this->template->holidays = $model->fetchAll();
     }
 
-    function actionImport(){
+    function actionImport()
+    {
         $model = $this->getService('HolidayModel');
         $model->fetchHolidays();
         exit;
@@ -46,14 +48,16 @@ final class HolidaysPresenter extends BasePresenter
         $grid = new DataGrid($this, $name);
 
         $grid->setDataSource($model->getFluent());
-        $grid->addColumnDateTime('date', 'date')
+        $grid->addColumnDateTime('date', 'Datum')
             ->setFormat('Y-m-d')
-        ->setEditableCallback(function($id, $value) use ($model): void {
-                $model->update(['date'=>$value],$id);
+            ->setSortable()
+            ->setEditableCallback(function ($id, $value) use ($model): void {
+                $model->update(['date' => $value], $id);
             });
-        $grid->addColumnText('event', 'event')->setEditableCallback(function($id, $value) use($model): void {
-            $model->update(['event'=>$value],$id);
-        });
+        $grid->addColumnText('event', 'Udalosť')
+            ->setEditableCallback(function ($id, $value) use ($model): void {
+                $model->update(['event' => $value], $id);
+            });
 
 //        $grid->addInlineAdd()
 //            ->onControlAdd[] = function(\Nette\Forms\Container $container) {
@@ -82,8 +86,9 @@ final class HolidaysPresenter extends BasePresenter
             ->setTitle('Zmazat')
             ->setClass('btn btn-xs btn-danger <strong class="text-danger">ajax</strong>');
     }
-    
-    function handleDelete($id){
+
+    function handleDelete($id)
+    {
         $model = $this->getService('HolidayModel');
         $model->delete($id);
         $this->flashMessage("Zaznam vymazany", 'success');
@@ -98,7 +103,9 @@ final class HolidaysPresenter extends BasePresenter
 
     protected function createComponentAddHolidayForm()
     {
+
         $form = new Form();
+
         $form->addText('date', 'Datum:')->setHtmlAttribute('class', 'datepicker')->isRequired();
         $form->addText('event', 'Udalost:')->isRequired();
         $form->addSubmit('add', 'Pridať');
@@ -115,5 +122,5 @@ final class HolidaysPresenter extends BasePresenter
         $this->redirect('Holidays:');
     }
 
-
 }
+
