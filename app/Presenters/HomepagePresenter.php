@@ -27,6 +27,7 @@ final class HomepagePresenter extends BasePresenter
 
         $this->template->users = $userModel->delete($id);
 
+        $this->flashMessage('Roboš bol zmazaný.');
         $this->redirect('Homepage:default');
     }
 

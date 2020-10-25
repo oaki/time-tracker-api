@@ -45,3 +45,36 @@ div.flash.inline {
     height:40px;
     border:0px none;
 }
+
+.summary-table {
+    font-size: 0.8rem;
+
+}
+
+.summary-table td,.summary-table th{
+    text-align: center;
+    min-width: 40px;
+    vertical-align: middle;
+}
+
+.summary-table .weekend{
+    background-color: #f1adad6b;
+}
+
+.summary-table input.number{
+    width: 30px;
+    text-align: center;
+    border: 1px solid transparent;
+    background-color: transparent;
+}
+
+.summary-table input.price{
+    width: 70px;
+    background-color: transparent;
+    border: 1px solid #1c2d5d63;
+    text-align: right;
+}
+
+.summary-table td.price-bg{
+    background-color: rgb(0 128 255 / 44%);
+}

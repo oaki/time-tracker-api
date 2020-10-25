@@ -32,12 +32,28 @@ class LogModel
 
     static function sumIntervals($intervals){
 
+        $sum = 0;
         foreach ($intervals as $interval){
-            if(isset($interval['intervals'])){
+            if(isset($interval['arrival']) AND isset($interval['leave']) ){
+                $diff = $interval['arrival']['time']->diff($interval['leave']['time']);
 
+                $hours = $diff->h;
+                $minutes = $diff->i;
+
+                if($minutes>45){
+                    $hours++;
+                }elseif ($minutes>29){
+                    $hours+=0.75;
+                }elseif ($minutes>14){
+                    $hours+=0.5;
+                }elseif ($minutes>0){
+                    $hours+=0.25;
+                }
+                $sum+=$hours;
             }
         }
 
+        return $sum;
     }
 
     /**

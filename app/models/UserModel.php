@@ -96,8 +96,7 @@ class UserModel
         // First day of the month.
         $startDate = date('Y-m-01', strtotime($queryDate));
 
-        $maxDays = date('t', strtotime($queryDate));
-
+        $mountCountDays = date('t', strtotime($queryDate));
 
         // Last day of the month.
         $endDate = date('Y-m-t', strtotime($queryDate));
@@ -110,41 +109,29 @@ class UserModel
             ->where('time <= %s', $endDate)
             ->fetchAssoc('day,id');
 
-        $newList = array_map(function ($day) use ($list){
+        $newList = array_map(function ($day) use ($list) {
 
-            if(isset($list[$day])){
-                $intervals = LogModel::makeIntervals($list[$day]);
+            if (isset($list[$day])) {
+                $intervalsObj = LogModel::makeIntervals($list[$day]);
                 return [
-                    'intervals'=>$intervals,
-                    'sum'=>LogModel::sumIntervals($intervals)
+                    'intervals' => $intervalsObj['intervals'],
+                    'sum' => LogModel::sumIntervals($intervalsObj['intervals'])
                 ];
             }
             return [
-                'intervals'=>[]
+                'intervals' => []
             ];
         }, LogModel::monthDays($year, $month));
-        dump($list);
-        dump($newList);
-        exit;
+//        dump($newList);
 
-        $dayList = [];
-        for ($i = 1; $i <= $maxDays; $i++) {
-            if (isset($list[$i])) {
-                $dayLogs = $list[$i];
-                $count = count($dayLogs);
 
-                $dayList[$i] = $list[$i];
-            }
-        }
-
-        return $list;
+        return $newList;
     }
 
-    function calculateDayPrice($rate ){
+    function calculateDayPrice($rate)
+    {
 
     }
-
-
 
 
     public function add($values)

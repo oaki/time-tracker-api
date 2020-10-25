@@ -1,8 +1,15 @@
 {block content}
 
 
-<h2>Nastavenia: {$user['name']}
+<h2>
+    Nastavenia: {$user['name']}
     <a href="{plink Homepage:default}" class="btn btn-success float-right">Spať</a>
 </h2>
 
 {control editUserForm}
+
+<div class="jumbotron mt-5" style="padding:1rem;">
+    <div style="font-weight: bold;">Chceš zmazať {$user['name']}?
+        <a class="btn btn-danger" href="{plink Homepage:delete id=>$user->id}" role="button">Zmazať</a>
+    </div>
+</div>
