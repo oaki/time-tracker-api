@@ -3,19 +3,27 @@
 
 <h2>Dochádzka</h2>
 <div>
-    {form selectDateForm}
-        {label year}{input year}
-        {input submit}
+    {form selectDateForm class=>"form-inline"}
+        <div class="form-group">
+            {label year} &nbsp;&nbsp;
+            {input year class=>"form-control"}
+        </div>
+        <div class="ml-3">
+            {input submit class=>"btn btn-primary"}
+        </div>
 
     {/form}
 </div>
 
 {foreach $months as $k=>$month}
 
-    <a href="{plink generate year=>$year,month=>$k}" class="btn btn-success float-right"
-       data-month="{$k}">Generovať</a>
+    <a href="{plink generate year=>$year,month=>$k}"
+       class="btn btn-success float-right {ifset $summary[$k]}summary-exist{/ifset}"
+       data-month="{$k}">
+        Generovať
+    </a>
 
-    <h3 >{$month['name']}
+    <h3>{$month['name']}
 
         <span style="font-size: 10px;color: silver;font-weight: normal;">
                         ({count($month['days'])})
@@ -27,7 +35,7 @@
         <table class="table table-striped table-sm summary-table">
             <thead>
             <tr>
-                <th>Meno/deň</th>
+                <th data-fixed-columns="true">Meno/deň</th>
                 {for $i=1;$i<=count($month['days']);$i++}
                     <th n:class="($getWeekDay($year, $k, $i) == 'So' OR $getWeekDay($year, $k, $i) == 'Ne') ? weekend">
                         {$getWeekDay($year, $k, $i)}<br/>
@@ -47,11 +55,15 @@
             {if count($summary) > 0 AND isset($summary[$k])}
                 {foreach $summary[$k]['json'] as $arr}
                     <tr data-summary-id="{$summary[$k]['id']}" class="summary user" data-user-id="{$arr->userId}">
-                        <th>{$arr->userName}</th>
+                        <th data-fixed-columns="true">{$arr->userName}</th>
 
                         {foreach $arr->days as $a}
                             <td n:class="($getWeekDay($year, $k, $a->day) == 'So' OR $getWeekDay($year, $k, $a->day) == 'Ne') ? weekend">
-                                <input type="text" value="{$a->sum}" class="number user-{$arr->userId}-day hour hour-{$arr->userId}-{$k}"/>
+                                <input type="text" value="{$a->sum}"
+                                       data-user-id="{$arr->userId}"
+                                       data-day="{$a->day}"
+                                       maxlength="4"
+                                       class="number user-{$arr->userId}-day hour hour-{$arr->userId}-{$k}"/>
                             </td>
                         {/foreach}
                         {dump $arr}
@@ -60,6 +72,7 @@
                         </td>
                         <td>
                             <input
+                                    data-user-id="{$arr->userId}"
                                     class="number user-rate user-rate-{$arr->userId}-{$arr->month}" type="text"
                                     value="{$arr->userRate}"/>
                         </td>
@@ -67,10 +80,12 @@
                             <strong class="user-price-{$arr->userId}-{$arr->month}"></strong>
                         </td>
                         <td class="price-bg">
-                            <input class="price user-payout user-payout-{$arr->userId}-{$arr->month}" value="{$arr->userPayout}"/>
+                            <input data-user-id="{$arr->userId}" class="price user-payout user-payout-{$arr->userId}-{$arr->month}"
+                                   value="{$arr->userPayout}"/>
                         </td>
                         <td class="price-bg">
-                            <input class="price user-pay-extra user-pay-extra-{$arr->userId}-{$arr->month}" value="{$arr->userPayExtra}"/>
+                            <input data-user-id="{$arr->userId}" class="price user-pay-extra user-pay-extra-{$arr->userId}-{$arr->month}"
+                                   value="{$arr->userPayExtra}"/>
                         </td>
                     </tr>
                 {/foreach}
@@ -120,10 +135,10 @@
 
         calculate();
 
-        $('.hour').on('change', function(){
+        $('.hour').on('change', function () {
             const newVal = $(this).val().replace(',', '.');
-            console.log('newVal',newVal);
-            if(isNumeric(newVal)){
+            console.log('newVal', newVal);
+            if (isNumeric(newVal)) {
                 $(this).val(newVal);
             }
             calculate();
@@ -131,8 +146,8 @@
 
         $('.user-rate').on('change', function () {
             const newVal = $(this).val().replace(',', '.');
-            console.log('newVal',newVal);
-            if(isNumeric(newVal)){
+            console.log('newVal', newVal);
+            if (isNumeric(newVal)) {
                 $(this).val(newVal);
             }
             calculate();
@@ -145,25 +160,34 @@
             const endpoint = {plink save};
 
 
-
             let type = '';
-            if($(this).hasClass('hour')){
+            if ($(this).hasClass('hour')) {
                 type = 'hour';
             }
-            if($(this).hasClass('user-rate')){
+            if ($(this).hasClass('user-rate')) {
                 type = 'user-rate';
             }
-            if($(this).hasClass('user-payout')){
+            if ($(this).hasClass('user-payout')) {
                 type = 'user-payout';
-            } if($(this).hasClass('user-pay-extra')){
+            }
+            if ($(this).hasClass('user-pay-extra')) {
                 type = 'user-pay-extra';
             }
 
-            const json = JSON.stringify({
+            const obj ={
                 summaryId: parseInt(summaryId),
                 type,
-                value:value
-            });
+                value: value,
+                userId:$(this).attr('data-user-id')
+            };
+
+            if($(this).hasClass('hour')){
+                obj.day = $(this).attr('data-day');
+                obj.userId = $(this).attr('data-user-id');
+            }
+
+            const json = JSON.stringify(obj);
+            console.log('json',json);
             $.ajax({
                 type: "POST",
                 url: endpoint,
@@ -179,5 +203,12 @@
 
             });
         });
+
+        $('.summary-exist').click(function (e) {
+            if (!confirm("Data budú premazané! Naozaj chces pokračovať???")) {
+                return false;
+            }
+        });
+
     });
 </script>

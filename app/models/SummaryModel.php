@@ -23,7 +23,7 @@ class SummaryModel
             ->fetchAll();
 
         $res = [];
-        foreach ($list as $l){
+        foreach ($list as $l) {
             $data = $l;
             $data['json'] = json_decode($data['json']);;
             $res[$data['month']] = $data;
@@ -32,14 +32,35 @@ class SummaryModel
         return $res;
     }
 
-    public function insert($year, $month, $json)
+    public function fetchJson($id)
     {
-        $this->connection->insert('summary', [
-            'year' => $year,
-            'month' => $month,
+        return $this->connection->select('json')->from('summary')->where('id=%i', $id)->fetchSingle();
+    }
+
+    public function insertOrUpdate($year, $month, $json)
+    {
+        $id = $this->connection->select('id')->from('summary')->where('year = %i', $year, 'and month = %i', $month)->fetchSingle();
+
+        if ($id) {
+            $this->connection->update('summary', [
+                'json' => $json,
+            ])->where('id = %i', $id)->execute();
+        } else {
+            $this->connection->insert('summary', [
+                'year' => $year,
+                'month' => $month,
+                'json' => $json,
+                'version' => 1
+            ])->execute();
+        }
+    }
+
+    public function update($id, $json)
+    {
+        $this->connection->update('summary', [
             'json' => $json,
-            'version' => 1
-        ])->execute();
+        ])->where('id = %i', $id)
+            ->execute();
     }
 
     public static function getMonths($year)

@@ -6,8 +6,8 @@ namespace App\Presenters;
 
 use App\Model\LogModel;
 use App\Model\SummaryModel;
-use function Couchbase\defaultEncoder;
 use Nette;
+use Tracy\Debugger;
 
 
 final class SummaryPresenter extends BasePresenter
@@ -42,15 +42,59 @@ final class SummaryPresenter extends BasePresenter
 //        exit;
     }
 
-    function actionSave(){
-        $all = $this->getHttpRequest()->getRawBody();     // array of all POST parameters
+    function actionSave()
+    {
         $post = $this->getHttpRequest()->getPost();     // array of all POST parameters
+
         $data = json_decode($post['json']);
         $summaryId = $data->summaryId;
         $type = $data->type;
         $value = $data->value;
+        $userId = intval($data->userId);
 
-        dump('save', $summaryId, $type);
+        $summaryModel = $this->getService('SummaryModel');
+        $jsonData = $summaryModel->fetchJson($summaryId);
+
+        $obj = json_decode($jsonData);
+
+
+        $jsonToSave = '';
+
+        foreach ($obj as $row) {
+            if ($row->userId === $userId) {
+                switch ($type) {
+                    case 'hour':
+                        $days = $row->days;
+                        $day = intval($data->day);
+
+                        foreach ($days as $item) {
+                            if (intval($item->day) === intval($day)) {
+                                $item->sum = floatval($value);
+                            }
+                        }
+                        $jsonToSave = json_encode($obj);
+                        break;
+                    case 'user-rate':
+                        $row->userRate = floatval($value);
+                        $jsonToSave = json_encode($obj);
+                        break;
+
+                    case 'user-payout':
+                        $row->userPayout = floatval($value);
+                        $jsonToSave = json_encode($obj);
+                        break;
+
+                    case 'user-pay-extra':
+                        $row->userPayExtra = floatval($value);
+                        $jsonToSave = json_encode($obj);
+                        break;
+                }
+            }
+        }
+
+        if ($jsonToSave) {
+            $summaryModel->update($summaryId, $jsonToSave);
+        }
 
         exit;
     }
@@ -98,7 +142,7 @@ final class SummaryPresenter extends BasePresenter
             $jsonObj[] = $obj;
         }
 
-        $summaryModel->insert($year, $month, json_encode($jsonObj));
+        $summaryModel->insertOrUpdate($year, $month, json_encode($jsonObj));
         $this->flashMessage('Dochádzka za ' . $month . '. mesiac bola vygenerovaná.');
 
         $this->redirect('default');
